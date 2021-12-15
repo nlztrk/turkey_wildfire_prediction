@@ -1,0 +1,15 @@
+cython
+scipy
+numpy
+xarray
+xarray[io]
+lightgbm
+streamlit
+scikit-learn
+pandas
+tables
+seaborn
+plotly
+tqdm
+notebook
+matplotlib

@@ -1,0 +1,4 @@
+- https://github.com/h2oai/challenge-wildfires/blob/main/notebook/data/Data.md
+- https://earthdata.nasa.gov/earth-observation-data/near-real-time/citation#ed-lance-disclaimer
+- https://earthdata.nasa.gov/faq/firms-faq#ed-viirs-science-ready
+- http://berkeleyearth.org/methodology/

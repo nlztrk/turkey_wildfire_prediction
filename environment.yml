@@ -1,0 +1,13 @@
+name: wildfire
+channel_priority: strict
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.12
+  - cartopy
+  - python-graphviz==0.19
+  - pip
+  - pip:
+      - pip-tools
+      - -r req.txt
+

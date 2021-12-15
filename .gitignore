@@ -1,0 +1,7 @@
+data/raw_data/*
+data/train_val_test_data/*
+.ipynb_checkpoints
+.idea
+
+!.gitkeep
+!data/train_val_test_data/test.csv
