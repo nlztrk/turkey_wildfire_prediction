@@ -13,7 +13,7 @@ from app.global_vars import features_w_descs
 
 @st.cache
 def convert_df(df):
-   return df.to_csv(index=False).encode('utf-8')
+    return df.to_csv(index=False).encode('utf-8')
 
 
 def app():
@@ -128,7 +128,7 @@ def app():
             st.download_button(
                 "Download Predictions",
                 csv,
-                "predictions_"+str(monthnum)+"_"+str(2020)+".csv",
+                "predictions_" + str(monthnum) + "_" + str(2020) + ".csv",
                 "text/csv",
                 key='download-csv'
             )

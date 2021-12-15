@@ -16,8 +16,8 @@ Following variables are accessible in these datasets:
 - **Latitude:** The angular distance of a place north or south of the earth's equator, or of the equator of a celestial object, expressed in degrees.
 - **Longitude:** The angular distance of a place east or west of the Greenwich meridian, or west of the standard meridian of a celestial object, expressed in degrees.
 - **Brightness:** The brightness temperature of a fire pixel is measured (in Kelvin) using the MODIS channels 21/22 and channel 31. Brightness temperature is actually a measure of the photons at a particular wavelength received by the spacecraft, but presented in units of temperature.
-- **Scan & Track:** The scan value represents the spatial-resolution in the East-West direction of the scan and the track value represents the North-South spatial resolution of the scan. It should be noted that the pixel size is not always 1km across the scan track. The pixels at the “Eastern” and the “Western” edges of the scan are bigger than 1km. It is 1km only along the nadir (exact vertical from the satellite). Thus, the values shown for scan and track represent the actual spatial resolution of the scanned pixel.
-- **Acquire Date:** The day, month and year of the acuired data.
+- **Scan & Track:** The scan value represents the spatial-resolution in the East-West direction of the scan and the track value represents the North-South spatial resolution of the scan. It should be noted that the pixel size is not always 1 km across the scan track. The pixels at the “Eastern” and the “Western” edges of the scan are bigger than 1 km. It is 1 km only along the nadir (exact vertical from the satellite). Thus, the values shown for scan and track represent the actual spatial resolution of the scanned pixel.
+- **Acquire Date:** The day, month and year of the acquired data.
 - **Satellite:** The satellite ID.
 - **Instrument:** The indicator of the instrument that makes the measurement. (eg: VIIRS, MODIS etc.)
 - **Day&Night:** Whether it was day or night in the area where the data was taken.

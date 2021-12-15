@@ -1,5 +1,5 @@
 # H2O.ai Wildfire & Bushfire Challenge
-### Wildire Forecast for Turkey on a Monthly Basis
+### Wildfire Forecast for Turkey on a Monthly Basis
 #### Team "Too Hot Encoder"
 
 ## Getting Started
@@ -31,8 +31,6 @@ A new tab for the jupyter server will open in your default browser, go to the `n
 **Warning:** To run the data generation notebooks (numbered 1 and 2) you need to download raw data!
 
 ### Downloading Raw Data (Optional)
-The project repository includes different datasets. You should download them before training a model. Before downloading, you should configure your AWS-Client, by [AWS-Client Document](docs/aws_guide.md) (only Installation section).
-
 You will need raw data to generate new training data.
 - You can download the global fire data pre-uploaded by H2O from [here](https://s3.us-west-1.amazonaws.com/ai.h2o.challenge.datasets/wildfire-challenge/firms_fires_2013_2021.zip)
 - You can download the temperature fire data from these links:

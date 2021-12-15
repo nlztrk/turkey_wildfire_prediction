@@ -13,10 +13,11 @@ def app():
     features = copy.deepcopy(features_w_descs)
 
     st.title('Model Details')
-    st.markdown("LightGBM, an advanced decision tree algorithm, was used in the project. The machine learning model is trained using the past fire and temperature data and the synthesized data generated from these data.")
+    st.markdown(
+        "LightGBM, an advanced decision tree algorithm, was used in the project. The machine learning model is trained using the past fire and temperature data and the synthesized data generated from these data.")
 
     with st.spinner('Extracting model details...'):
-        ### Plot Tree
+        # Plot Tree
         st.subheader('Structure of the Decision Tree')
         st.markdown("You may need to zoom the figure by clicking the logo on top-right of it.")
         fig, ax = plt.subplots(figsize=(24, 18))
@@ -29,7 +30,7 @@ def app():
                   pad_inches=0
                   )
 
-        ### FeatImp - Usage
+        # FeatImp - Usage
 
         feature_imp = pd.DataFrame(sorted(zip(lgb_model.feature_importance(),
                                               features.values())), columns=['Usage Count',
@@ -50,7 +51,7 @@ def app():
                   pad_inches=0
                   )
 
-        ### FeatImp - Gain
+        # FeatImp - Gain
 
         feature_imp = pd.DataFrame(sorted(zip(lgb_model.feature_importance(importance_type="gain"),
                                               features.values())), columns=['Information Gain Ratio',
