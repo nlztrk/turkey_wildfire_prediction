@@ -21,6 +21,7 @@ streamlit run server.py
 ```
 When the command is run, the application will automatically open a new tab in your default browser.
 
+**Warning:** On your first try, you may encounter a Streamlit message asking for your e-mail. Skip this step by pressing 'Enter' without typing anything.
 ### Custom Data Generation and Model Training (Optional)
 The repository comes with a pre-trained model and a pre-generated test set. But if you want to make your own changes, start a jupyter server with the following command:
 ```
