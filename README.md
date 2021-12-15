@@ -24,7 +24,7 @@ conda activate wildfire
 ```
 **Warning:** The next steps are explained assuming your virtual environment is active.
 ### Running the Application
-By running the command below, you can run the application where you can access detailed information about the project, generate predictions on test data, view model details, and evaluate model performance:
+You can directly run the application, make predictions and have look at the evaluation results of the pre-trained model. By running the command below, you can run the application where you can access detailed information about the project, generate predictions on test data, view model details, and evaluate model performance:
 ```bash
 streamlit run server.py
 ```

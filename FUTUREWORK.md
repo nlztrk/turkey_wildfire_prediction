@@ -12,6 +12,7 @@ Due to time constraints, more effort has been put into *application* part. From 
   - Relative humidity
   - Wind speed
   - Flora
+- Statistical analysis and exploratory data analysis on the datasets
 - Extracting features for time-series analysis on wildfire occurrence. *(eg: autocorrelation, seasonality)*
 - Generating features that represent the areal average rather than spot on location-based detections
 - Implementing hyper-parameter optimization using *Optuna* or *Hyperopt*.

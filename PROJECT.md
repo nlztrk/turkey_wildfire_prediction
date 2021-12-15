@@ -22,6 +22,7 @@ The aim of the project is to predict the probability of wildfire occurrence in T
 [The wildfires at Turkey](https://en.wikipedia.org/wiki/2021_Turkey_wildfires) started in August 2021, spread over very large areas and resulted in the destruction of large areas and living things due to lack of intervention, have created a big agenda throughout the country. The public and politicians often complained about this technical inadequacy and suggested that improvements should be made in this regard. Within the scope of the project, it was desired to see whether an estimation could be made on this subject throughout the country, and if so, how successful the results would be.
 
 ### The Goal
+![Sample prediction from the model](app/media/sample_prediction.png)
 The goal of the project is to estimate the probability of a wildfire occurrence for each month of 2020 for each grid segment by dividing the area of Turkey in latitude and longitude with 1 degree precision.
 It is defined in the H2O Competition Overview as *"Predicting the behavior of wildfires"*.
 
@@ -36,7 +37,6 @@ LightGBM (an advanced decision tree algorithm) was used in the project. The foll
 - LightGBM is often faster to train than similar decision-tree-based algorithms.
 - It has a library that makes it easy to use. Translation and transfer to different programming languages can be done.
 - It contains various evaluation and analysis methods. Thus, when the user wants to measure model performance, s/he does not have to write code from scratch or search for it.
-- It was used in the example application 🤷‍♂️
 
 The machine learning model is trained using the past fire and temperature data and the synthesized data generated from these data.
 

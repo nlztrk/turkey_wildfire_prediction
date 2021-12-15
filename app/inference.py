@@ -149,7 +149,7 @@ def app():
 
             ############
             # Download Predictions
-            st.subheader('Get Prediction File')
+            st.subheader('Prediction File')
             st.markdown("You can download the predictions in .csv format:")
             downloaded_df = plot_data[["latitude", "longitude", "pred_value"]]
             downloaded_df["month"] = monthnum
