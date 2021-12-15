@@ -1,34 +1,83 @@
 # H2O.ai Wildfire & Bushfire Challenge
 ### Wildfire Forecast for Turkey on a Monthly Basis
 #### Team "Too Hot Encoder"
-## Challenge Description
-Wildfires (a.k.a. bushfires) are a serious problem that threaten lives, communities, wildlife, and forests every year, with global climate change, it is getting worse. They are a global issue and are considered one of the most dangerous disasters we face. While humans cause many fires, other factors, including wind, lightning, drought, and landscape, impact where fires occur and how they spread.
 
-Wildfires present unique and severe forecasting challenges. Compared to storms, such as hurricanes, wildfires are ambiguous and hard to predict, especially when you start looking at large, intense wildfires. Those fires combine complex weather, different landscapes, fuel sources such as housing materials or dry forests, and more.
+---
 
-The H2O.ai Fights Fire Challenge aims to provide first responders, local leaders, businesses, and the public with new AI applications that can be used to help save lives and property. We expect the participants and teams to build for one of these audiences, but we want to make sure you have the creative freedom to decide which one to design for, as that will lead to a greater breadth of new applications being built.
+### Non-Technical Details
+With [this documentation](PROJECT.md), you can access information like motivation, goal and methodology.
 
-### Motivation
-![](app/media/wildfire.jpg)
+### Future Work
+With [this documentation](FUTUREWORK.md), you can access the planned future work and any active issues.
 
-The aim of the project is to predict the probability of wildfire occurrence in Turkey for each month in 2020. As a result of these predictions, it is aimed to carry out more intensive monitoring studies in possible fire areas and to respond to fires very soon after they start. It is also aimed to derive generalizable relations by interpreting the model outputs and the importance attributed to each variable used by the model.\n\nThe model trained with the data between 2013-2018, validated with the data from 2019. The results you will see are extracted from 2020, which is the test split for this project. The model didn't see any data from this split during the training.
+--- 
+## Getting Started
 
-![](app/media/wildfire_bodrum.png)
+### Dependencies
+Latest version of your favourite conda package manager (>= 4.6) needs to be installed. Please refer to [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) for conda installation.
 
-[The wildfires at Turkey](https://en.wikipedia.org/wiki/2021_Turkey_wildfires) started in August 2021, spread over very large areas and resulted in the destruction of large areas and living things due to lack of intervention, have created a big agenda throughout the country. The public and politicians often complained about this technical inadequacy and suggested that improvements should be made in this regard. Within the scope of the project, it was desired to see whether an estimation could be made on this subject throughout the country, and if so, how successful the results would be
+### Setup
+To be able to work in the project without any issues, create and activate your virtual working environment with the following commands:
+```bash
+conda env create -f environment.yml
+conda activate wildfire
+```
+**Warning:** The next steps are explained assuming your virtual environment is active.
+### Running the Application
+By running the command below, you can run the application where you can access detailed information about the project, generate predictions on test data, view model details, and evaluate model performance:
+```bash
+streamlit run server.py
+```
+When the command is run, the application will automatically open a new tab in your default browser.
 
-### The Goal
-The goal of the project is to estimate the probability of a wildfire occurrence for each month of 2020 for each grid segment by dividing the area of Turkey in latitude and longitude with 1 degree precision.
+**Warning:** On your first try, you may encounter a Streamlit message asking for your e-mail. Skip this step by pressing 'Enter' without typing anything.
+### Custom Data Generation and Model Training (Optional)
+The repository comes with a pre-trained model and a pre-generated test set. But if you want to make your own changes, start a jupyter server with the following command:
+```
+jupyter notebook
+```
+A new tab for the jupyter server will open in your default browser, go to the `notebook` folder. You can run all the necessary phases for the project by running the notebooks in their numbered order.
 
-### Methodology
-LightGBM, an advanced decision tree algorithm, was used in the project. The machine learning model is trained using the past fire and temperature data and the synthesized data generated from these data.
+**Warning:** To run the data generation notebooks (numbered 1 and 2) you need to download raw data!
 
-- You can access the list of used data variables from [here](app/markdown/model_variables.md).
-- You can access the details of wildfire dataset from [here](app/markdown/data_active_fire.md).
-- You can access the details of temperature dataset from [here](app/markdown/data_temperatures.md).
+**Warning:** If you are going to train the model on different are, country etc. , you should download the shapefile files of its polygon from [here](https://gadm.org/download_country.html) and extract them under `data/country_shape`. Then you should modify the corresponding lines in:
+```
+app/inference.py
+app/performance.py
+```
 
-## Working with the Project
-With [this documentation](PROJECT.md), you can access information about the running and editing of the project.
+### Downloading Raw Data (Optional)
+You will need raw data to generate new training data.
+- You can download the global fire data pre-uploaded by H2O from [here](https://s3.us-west-1.amazonaws.com/ai.h2o.challenge.datasets/wildfire-challenge/firms_fires_2013_2021.zip)
+- You can download the temperature fire data from these links:
+  - [Average Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TAVG_Daily_LatLong1_2010.nc)
+  - [Average Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TAVG_Daily_LatLong1_2020.nc)
+  - [Maximum Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMAX_Daily_LatLong1_2010.nc)
+  - [Maximum Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMAX_Daily_LatLong1_2020.nc)
+  - [Minimum Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMIN_Daily_LatLong1_2010.nc)
+  - [Minimum Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMIN_Daily_LatLong1_2020.nc)
+
+After the necessary data is downloaded, it should be extracted to the `data/raw_data/` directory. After extraction, the contents of the `data/raw_data/` folder should be as follows:
+```
+- DL_FIRE_J1V-C2_216004/
+- DL_FIRE_M-C61_216003/
+- DL_FIRE_M-C61_216006/
+...
+- Complete_TAVG_Daily_LatLong1_2010.nc
+- Complete_TAVG_Daily_LatLong1_2010.nc
+- Complete_TMAX_Daily_LatLong1_2020.nc
+...
+```
+
+### Adding Dependencies (Optional)
+If you want to add a dependency, add it to `req.in` and then regenerate the `req.txt` using
+```
+pip-compile req.in
+```
+and install the regenerated dependencies using
+```
+pip install -r req.txt
+```
 
 ## Author
 * [Anil Ozturk](anilozturk96@gmail.com)

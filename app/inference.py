@@ -9,6 +9,7 @@ from scipy.ndimage.filters import gaussian_filter
 import matplotlib
 from shapely.geometry import Polygon
 from app.global_vars import features_w_descs
+import pydeck as pdk
 
 
 @st.cache
@@ -28,8 +29,11 @@ def app():
 
     st.title('Wildfire Risk Map of Turkey')
     st.markdown(
-        "The model will make predictions for 2020. Please select a month with the slider below to make a prediction.")
-
+        "The model will make predictions for 2020. Please select a month and confidence threshold with the slider below to make a prediction.")
+    with st.expander("What is confidence threshold?"):
+        st.markdown(
+            'At which confidence level your model will mark a region as a *"potential wildfire area"*?'
+            '\n\n$[0., 1.]$ will be mapped to $[0\%-100\%]$')
     months = ['January',
               'February',
               'March',
@@ -47,7 +51,7 @@ def app():
         'Prediction period:',
         value="September",
         options=months)
-    decision_threshold = st.slider('Decision threshold:', 0., 1., value=0.1, step=0.05)
+    decision_threshold = st.slider('Confidence threshold:', 0., 1., value=0.1, step=0.05)
 
     monthnum = np.argwhere(np.array(months) == selected_month)[0][0] + 1
 
@@ -101,7 +105,7 @@ def app():
             ax.set_extent([26, 45, 36, 42], ccrs.PlateCarree())
             ax.axis("off")
 
-            st.subheader('Predictions for ' + selected_month)
+            st.subheader('Predictions for ' + selected_month + " 2020")
             st.markdown(
                 "You are seeing a heatmap for the probabilities of wildfire occurences in Turkey, for " + selected_month + " 2020. You can change the target year with editing the split definitions in data generation notebooks in the repository.")
             st.pyplot(fig,
@@ -110,17 +114,43 @@ def app():
                       transparent=True,
                       pad_inches=0
                       )
+            st.markdown("---")
 
             ############
 
             st.subheader('Detailed Prediction Scatterplot')
+            st.markdown("You can see on the map that the model marks the areas with the potential to have wildfire in black.")
             df = pd.DataFrame(
                 plot_data[["latitude", "longitude"]][plot_data.pred_value >= 0.5].values,
                 columns=['lat', 'lon'])
-            st.map(df)
+
+            st.pydeck_chart(pdk.Deck(
+                map_style='mapbox://styles/mapbox/light-v9',
+                initial_view_state=pdk.ViewState(
+                    latitude=38.76,
+                    longitude=34.4,
+                    zoom=4.5,
+                    pitch=0
+                ),
+                layers=[
+                    pdk.Layer(
+                        'ScatterplotLayer',
+                        data=df,
+                        get_position='[lon, lat]',
+                        get_fill_color=[0, 0, 0],
+                        get_line_color=[0, 0, 0],
+                        opacity=0.35,
+                        get_radius=12000,
+                    ),
+                ],
+            ))
+
+            st.markdown("---")
 
             ############
             # Download Predictions
+            st.subheader('Get Prediction File')
+            st.markdown("You can download the predictions in .csv format:")
             downloaded_df = plot_data[["latitude", "longitude", "pred_value"]]
             downloaded_df["month"] = monthnum
             downloaded_df["year"] = 2020

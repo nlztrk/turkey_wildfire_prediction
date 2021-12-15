@@ -2,67 +2,47 @@
 ### Wildfire Forecast for Turkey on a Monthly Basis
 #### Team "Too Hot Encoder"
 
-## Getting Started
+---
 
-### Dependencies
-Latest version of your favourite conda package manager (>= 4.6) needs to be installed. Please refer to [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) for conda installation.
+## Non-Technical Report
+### Challenge Description
+Wildfires (a.k.a. bushfires) are a serious problem that threaten lives, communities, wildlife, and forests every year, with global climate change, it is getting worse. They are a global issue and are considered one of the most dangerous disasters we face. While humans cause many fires, other factors, including wind, lightning, drought, and landscape, impact where fires occur and how they spread.
 
-### Setup
-To be able to work in the project without any issues, create and activate your virtual working environment with the following commands:
-```bash
-conda env create -f environment.yml
-conda activate wildfire
-```
-**Warning:** The next steps are explained assuming your virtual environment is active.
-### Running the Application
-By running the command below, you can run the application where you can access detailed information about the project, generate predictions on test data, view model details, and evaluate model performance:
-```bash
-streamlit run server.py
-```
-When the command is run, the application will automatically open a new tab in your default browser.
+Wildfires present unique and severe forecasting challenges. Compared to storms, such as hurricanes, wildfires are ambiguous and hard to predict, especially when you start looking at large, intense wildfires. Those fires combine complex weather, different landscapes, fuel sources such as housing materials or dry forests, and more.
 
-**Warning:** On your first try, you may encounter a Streamlit message asking for your e-mail. Skip this step by pressing 'Enter' without typing anything.
-### Custom Data Generation and Model Training (Optional)
-The repository comes with a pre-trained model and a pre-generated test set. But if you want to make your own changes, start a jupyter server with the following command:
-```
-jupyter notebook
-```
-A new tab for the jupyter server will open in your default browser, go to the `notebook` folder. You can run all the necessary phases for the project by running the notebooks in their numbered order.
+The H2O.ai Fights Fire Challenge aims to provide first responders, local leaders, businesses, and the public with new AI applications that can be used to help save lives and property. We expect the participants and teams to build for one of these audiences, but we want to make sure you have the creative freedom to decide which one to design for, as that will lead to a greater breadth of new applications being built.
 
-**Warning:** To run the data generation notebooks (numbered 1 and 2) you need to download raw data!
+### Motivation
+![](app/media/wildfire.jpg)
 
-### Downloading Raw Data (Optional)
-You will need raw data to generate new training data.
-- You can download the global fire data pre-uploaded by H2O from [here](https://s3.us-west-1.amazonaws.com/ai.h2o.challenge.datasets/wildfire-challenge/firms_fires_2013_2021.zip)
-- You can download the temperature fire data from these links:
-  - [Average Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TAVG_Daily_LatLong1_2010.nc)
-  - [Average Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TAVG_Daily_LatLong1_2020.nc)
-  - [Maximum Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMAX_Daily_LatLong1_2010.nc)
-  - [Maximum Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMAX_Daily_LatLong1_2020.nc)
-  - [Minimum Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMIN_Daily_LatLong1_2010.nc)
-  - [Minimum Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMIN_Daily_LatLong1_2020.nc)
+The aim of the project is to predict the probability of wildfire occurrence in Turkey for each month in 2020. As a result of these predictions, it is aimed to carry out more intensive monitoring studies in possible fire areas and to respond to fires very soon after they start. It is also aimed to derive generalizable relations by interpreting the model outputs and the importance attributed to each variable used by the model.\n\nThe model trained with the data between 2013-2018, validated with the data from 2019. The results you will see are extracted from 2020, which is the test split for this project. The model didn't see any data from this split during the training.
 
-After the necessary data is downloaded, it should be extracted to the `data/raw_data/` directory. After extraction, the contents of the `data/raw_data/` folder should be as follows:
-```
-- DL_FIRE_J1V-C2_216004/
-- DL_FIRE_M-C61_216003/
-- DL_FIRE_M-C61_216006/
-...
-- Complete_TAVG_Daily_LatLong1_2010.nc
-- Complete_TAVG_Daily_LatLong1_2010.nc
-- Complete_TMAX_Daily_LatLong1_2020.nc
-...
-```
+![](app/media/wildfire_bodrum.png)
 
-### Adding Dependencies (Optional)
-If you want to add a dependency, add it to `req.in` and then regenerate the `req.txt` using
-```
-pip-compile req.in
-```
-and install the regenerated dependencies using
-```
-pip install -r req.txt
-```
+[The wildfires at Turkey](https://en.wikipedia.org/wiki/2021_Turkey_wildfires) started in August 2021, spread over very large areas and resulted in the destruction of large areas and living things due to lack of intervention, have created a big agenda throughout the country. The public and politicians often complained about this technical inadequacy and suggested that improvements should be made in this regard. Within the scope of the project, it was desired to see whether an estimation could be made on this subject throughout the country, and if so, how successful the results would be.
+
+### The Goal
+The goal of the project is to estimate the probability of a wildfire occurrence for each month of 2020 for each grid segment by dividing the area of Turkey in latitude and longitude with 1 degree precision.
+It is defined in the H2O Competition Overview as *"Predicting the behavior of wildfires"*.
+
+### Potential Audience
+Since the probability of wildfire occurence in certain areas in the future is being calculated, the following groups and individuals can benefit from this project:
+- **Firefighters:** Fire departments can keep firefighter density higher in risky areas, this way faster response can be provided in case of a wildfire.
+- **Municipal Administrative Staff:** The municipality administration can take protective and prohibitive precautions for various areas. Thus, the loss of life and property is minimized.
+- **Civil Society Organizations (CSOs):** Civil society organizations can find the opportunity to strengthen their networks in advance to collect aid in possible disaster situations in risky areas.
+### Methodology
+LightGBM (an advanced decision tree algorithm) was used in the project. The following factors were effective in choosing this algorithm:
+- Decision tree algorithms generally give better results than other statistical algorithms for tabular data. They are among the first algorithms to be tried.
+- LightGBM is often faster to train than similar decision-tree-based algorithms.
+- It has a library that makes it easy to use. Translation and transfer to different programming languages can be done.
+- It contains various evaluation and analysis methods. Thus, when the user wants to measure model performance, s/he does not have to write code from scratch or search for it.
+- It was used in the example application 🤷‍♂️
+
+The machine learning model is trained using the past fire and temperature data and the synthesized data generated from these data.
+
+- You can access the details of wildfire dataset from [here](app/markdown/data_active_fire.md).
+- You can access the details of temperature dataset from [here](app/markdown/data_temperatures.md).
+- You can access the list of used and synthetically produced variables from [here](app/markdown/model_variables.md).
 
 ## Author
 * [Anil Ozturk](anilozturk96@gmail.com)
