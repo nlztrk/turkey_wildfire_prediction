@@ -6,16 +6,13 @@
 
 ## Future Work
 
-### To-Be-Implemented
-Due to time constraints, more effort has been put into *application* part. From now on, the focus will be on the following items:
-- Usage of datasets for the following features:
-  - Relative humidity
-  - Wind speed
-  - Flora
-- Statistical analysis and exploratory data analysis on the datasets
+### Can-Be-Implemented
+Due to time constraints, more effort has been put into *application* part. But the following features can also be considered for further implementations:
+- Relative humidity
+- Wind speed
+- Flora
 - Extracting features for time-series analysis on wildfire occurrence. *(eg: autocorrelation, seasonality)*
 - Generating features that represent the areal average rather than spot on location-based detections
-- Implementing hyper-parameter optimization using *Optuna* or *Hyperopt*.
 - Trying different ML models. *(eg. CatBoost, XGBoost, neural networks, ensembles)*
 
 ### Any Issues

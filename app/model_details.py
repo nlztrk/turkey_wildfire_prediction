@@ -5,6 +5,7 @@ import seaborn as sns
 import streamlit as st
 from app.global_vars import features_w_descs
 import copy
+import plotly.express as px
 
 
 def app():
@@ -36,45 +37,27 @@ def app():
         # FeatImp - Usage
         feature_imp = pd.DataFrame(sorted(zip(lgb_model.feature_importance(),
                                               features.values())), columns=['Usage Count',
-                                                                            ''])
+                                                                            'Feature'])
 
-        fig = plt.figure(figsize=(4, 3))
-        pd.Series(lgb_model.feature_importance(), index=features).nlargest(4).plot(kind='barh')
-
-        sns.barplot(x="Usage Count",
-                    y="",
-                    data=feature_imp.sort_values(by="Usage Count", ascending=False),
-                    palette="Reds_d")
+        fig = px.bar(feature_imp, x="Feature", y="Usage Count")
+        fig.update_traces(marker_color='#B95A5A')
         st.subheader('Feature Importance (Based on Usage Count)')
         with st.expander("What does it mean?"):
             st.markdown("Graph of feature importance scores calculated according to how many times questions are asked to features in the data during the prediction process in the model.")
 
-        st.pyplot(fig,
-                  clear_figure=True,
-                  bbox_inches='tight',
-                  transparent=True,
-                  pad_inches=0
-                  )
+        st.plotly_chart(fig, use_container_width=True)
+
+
         st.markdown("---")
         # FeatImp - Gain
         feature_imp = pd.DataFrame(sorted(zip(lgb_model.feature_importance(importance_type="gain"),
                                               features.values())), columns=['Information Gain Ratio',
-                                                                            ''])
+                                                                            'Feature'])
 
-        fig = plt.figure(figsize=(4, 3))
-        pd.Series(lgb_model.feature_importance(), index=features).nlargest(4).plot(kind='barh')
-
-        sns.barplot(x="Information Gain Ratio",
-                    y="",
-                    data=feature_imp.sort_values(by="Information Gain Ratio", ascending=False),
-                    palette="Reds_d")
+        fig = px.bar(feature_imp, x="Feature", y="Information Gain Ratio")
+        fig.update_traces(marker_color='#B95A5A')
         st.subheader('Feature Importance (Based on Information Gain Ratio)')
         with st.expander("What does it mean?"):
             st.markdown("Graph of the feature importance scores calculated according to the effect of the features in the data on the model optimization metric.")
 
-        st.pyplot(fig,
-                  clear_figure=True,
-                  bbox_inches='tight',
-                  transparent=True,
-                  pad_inches=0
-                  )
+        st.plotly_chart(fig, use_container_width=True)

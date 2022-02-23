@@ -12,3 +12,16 @@ features_w_descs = {
     'temperature_max': "Highest temperature during the month",
     'temperature_avg': "Average temperature during the month"
 }
+
+months = ['January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December', ]

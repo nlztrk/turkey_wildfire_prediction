@@ -6,6 +6,8 @@
 #
 affine==2.3.0
     # via rasterio
+alembic==1.7.6
+    # via optuna
 altair==4.1.0
     # via streamlit
 appdirs==1.4.4
@@ -21,10 +23,13 @@ astor==0.8.1
 attrs==21.2.0
     # via
     #   cfgrib
+    #   cmd2
     #   eccodes
     #   jsonschema
     #   rasterio
     #   streamlit
+autopage==0.5.0
+    # via cliff
 backcall==0.2.0
     # via ipython
 backports.zoneinfo==0.2.1
@@ -66,8 +71,16 @@ click==7.1.2
     #   streamlit
 click-plugins==1.1.1
     # via rasterio
+cliff==3.10.0
+    # via optuna
 cligj==0.7.2
     # via rasterio
+cmaes==0.8.2
+    # via optuna
+cmd2==2.3.3
+    # via cliff
+colorlog==6.6.0
+    # via optuna
 cycler==0.11.0
     # via matplotlib
 cython==0.29.25
@@ -101,14 +114,20 @@ gitdb==4.0.9
     # via gitpython
 gitpython==3.1.24
     # via streamlit
+greenlet==1.1.2
+    # via sqlalchemy
 h5netcdf==0.11.0
     # via xarray
 h5py==3.6.0
     # via h5netcdf
 idna==3.3
     # via requests
+importlib-metadata==4.10.1
+    # via alembic
 importlib-resources==5.4.0
-    # via jsonschema
+    # via
+    #   alembic
+    #   jsonschema
 ipykernel==6.6.0
     # via
     #   ipywidgets
@@ -159,8 +178,12 @@ kiwisolver==1.3.2
     # via matplotlib
 lightgbm==3.3.1
     # via -r req.in
+mako==1.1.6
+    # via alembic
 markupsafe==2.0.1
-    # via jinja2
+    # via
+    #   jinja2
+    #   mako
 matplotlib==3.5.1
     # via
     #   -r req.in
@@ -202,6 +225,7 @@ numpy==1.20.3
     #   altair
     #   cfgrib
     #   cftime
+    #   cmaes
     #   eccodes
     #   h5py
     #   lightgbm
@@ -209,6 +233,7 @@ numpy==1.20.3
     #   netcdf4
     #   numcodecs
     #   numexpr
+    #   optuna
     #   pandas
     #   pyarrow
     #   pydap
@@ -222,11 +247,14 @@ numpy==1.20.3
     #   tables
     #   xarray
     #   zarr
+optuna==2.10.0
+    # via -r req.in
 packaging==21.3
     # via
     #   bleach
     #   matplotlib
     #   numexpr
+    #   optuna
     #   pooch
     #   streamlit
 pandas==1.3.5
@@ -240,6 +268,10 @@ pandocfilters==1.5.0
     # via nbconvert
 parso==0.8.3
     # via jedi
+pbr==5.8.0
+    # via
+    #   cliff
+    #   stevedore
 pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
@@ -252,6 +284,8 @@ plotly==5.4.0
     # via -r req.in
 pooch==1.5.2
     # via xarray
+prettytable==3.0.0
+    # via cliff
 prometheus-client==0.12.0
     # via notebook
 prompt-toolkit==3.0.24
@@ -279,9 +313,12 @@ pympler==0.9
     # via streamlit
 pyparsing==3.0.6
     # via
+    #   cliff
     #   matplotlib
     #   packaging
     #   snuggs
+pyperclip==1.8.2
+    # via cmd2
 pyrsistent==0.18.0
     # via jsonschema
 python-dateutil==2.8.2
@@ -294,6 +331,10 @@ pytz==2021.3
     # via pandas
 pytz-deprecation-shim==0.1.0.post0
     # via tzlocal
+pyyaml==6.0
+    # via
+    #   cliff
+    #   optuna
 pyzmq==22.3.0
     # via
     #   jupyter-client
@@ -312,6 +353,7 @@ scipy==1.7.3
     # via
     #   -r req.in
     #   lightgbm
+    #   optuna
     #   scikit-learn
     #   seaborn
     #   xarray
@@ -333,6 +375,12 @@ snuggs==1.4.7
     # via rasterio
 soupsieve==2.3.1
     # via beautifulsoup4
+sqlalchemy==1.4.31
+    # via
+    #   alembic
+    #   optuna
+stevedore==3.5.0
+    # via cliff
 streamlit==1.2.0
     # via -r req.in
 tables==3.6.1
@@ -357,7 +405,9 @@ tornado==6.1
     #   streamlit
     #   terminado
 tqdm==4.62.3
-    # via -r req.in
+    # via
+    #   -r req.in
+    #   optuna
 traitlets==5.1.1
     # via
     #   ipykernel
@@ -384,7 +434,10 @@ validators==0.18.2
 watchdog==2.1.6
     # via streamlit
 wcwidth==0.2.5
-    # via prompt-toolkit
+    # via
+    #   cmd2
+    #   prettytable
+    #   prompt-toolkit
 webencodings==0.5.1
     # via bleach
 webob==1.8.7
@@ -398,7 +451,9 @@ xarray[io]==0.20.2
 zarr==2.10.3
     # via xarray
 zipp==3.6.0
-    # via importlib-resources
+    # via
+    #   importlib-metadata
+    #   importlib-resources
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

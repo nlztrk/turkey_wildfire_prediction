@@ -13,7 +13,7 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import precision_score, recall_score, f1_score
 import plotly.express as px
-from app.global_vars import features_w_descs
+from app.global_vars import features_w_descs, months
 import pydeck as pdk
 
 
@@ -34,20 +34,6 @@ def app():
         st.markdown(
             'At which confidence level your model will mark a region as a *"potential wildfire area"*?'
             '\n\n$[0., 1.]$ will be mapped to $[0\%-100\%]$')
-
-    months = ['January',
-              'February',
-              'March',
-              'April',
-              'May',
-              'June',
-              'July',
-              'August',
-              'September',
-              'October',
-              'November',
-              'December',
-              'All Year']
 
     selected_month = st.select_slider(
         'Prediction period:',

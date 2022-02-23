@@ -13,3 +13,4 @@ plotly
 tqdm
 notebook
 matplotlib
+optuna

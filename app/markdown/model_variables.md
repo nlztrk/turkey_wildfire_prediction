@@ -2,6 +2,8 @@
 
 The model attempts to predict future wildfire probabilities by utilizing historical stored earth measurement data and statistics derived from this data. In this prediction step, the following raw and derived variables are used.
 
+---
+
 #### Latitude
 The angular distance of a place north or south of the earth's equator, or of the equator of a celestial object, expressed in degrees.
 #### Longitude

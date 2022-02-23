@@ -8,7 +8,7 @@ import pandas as pd
 from scipy.ndimage.filters import gaussian_filter
 import matplotlib
 from shapely.geometry import Polygon
-from app.global_vars import features_w_descs
+from app.global_vars import features_w_descs, months
 import pydeck as pdk
 
 
@@ -27,25 +27,13 @@ def app():
 
     features = features_w_descs.keys()
 
-    st.title('Wildfire Risk Map of Turkey')
+    st.title('Wildfire Risk Map Prediction for Turkey')
     st.markdown(
         "The model will make predictions for 2020. Please select a month and confidence threshold with the slider below to make a prediction.")
     with st.expander("What is confidence threshold?"):
         st.markdown(
             'At which confidence level your model will mark a region as a *"potential wildfire area"*?'
             '\n\n$[0., 1.]$ will be mapped to $[0\%-100\%]$')
-    months = ['January',
-              'February',
-              'March',
-              'April',
-              'May',
-              'June',
-              'July',
-              'August',
-              'September',
-              'October',
-              'November',
-              'December', ]
 
     selected_month = st.select_slider(
         'Prediction period:',
