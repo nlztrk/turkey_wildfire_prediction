@@ -137,7 +137,7 @@ def app():
             ############
 
             inverse_multipoly = [Polygon([(-50, -50), (-50, 50), (50, 50), (50, -50)],
-                                         holes=[list(poly.exterior.coords)[::-1] for poly in adm1_shapes[0]]
+                                         holes=[list(poly.exterior.coords) for poly in adm1_shapes[0]]
                                          )]
 
             ####

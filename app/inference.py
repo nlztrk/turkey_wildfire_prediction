@@ -55,7 +55,7 @@ def app():
             plot_data["pred_value"] = test_binary_predictions
 
             inverse_multipoly = [Polygon([(-50, -50), (-50, 50), (50, 50), (50, -50)],
-                                         holes=[list(poly.exterior.coords)[::-1] for poly in adm1_shapes[0]]
+                                         holes=[list(poly.exterior.coords) for poly in adm1_shapes[0].geoms]
                                          )]
 
             unq_lats = sorted(plot_data["latitude"].unique())
