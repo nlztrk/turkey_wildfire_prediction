@@ -9,7 +9,7 @@ import plotly.express as px
 def app():
     st.title('Training Data Insights')
     with st.spinner('Creating training data analysis...'):
-        full_df = pd.read_csv('./data/train_val_test_data/full_data.csv')
+        full_df = pd.read_csv('./data/train_val_test_data/train.csv')
         features = [
             'latitude', 'longitude', 'month',
             'fire_cnt_before', 'fire_before',
