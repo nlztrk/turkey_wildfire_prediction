@@ -4,7 +4,7 @@ channels:
   - conda-forge
 dependencies:
   - python=3.8.12
-  - cartopy
+  - cartopy=0.20.2
   - python-graphviz==0.19
   - pip
   - pip:
