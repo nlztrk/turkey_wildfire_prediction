@@ -5,3 +5,4 @@ data/train_val_test_data/*
 
 !.gitkeep
 !data/train_val_test_data/test.csv
+!data/train_val_test_data/train.csv
